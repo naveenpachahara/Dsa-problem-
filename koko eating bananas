@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int minEatingSpeed(vector<int>& arr, int h) {
+        int low = 1;  
+        int high = *max_element(arr.begin(), arr.end());  
+        int ans = high;
+
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            
+            long long total = 0;
+            for (int x : arr) {
+                total += (x + mid - 1) / mid;  // ceil(x/mid)
+            }
+
+            if (total <= h) {
+                ans = mid;       
+                high = mid - 1;  
+            } else {
+                low = mid + 1;   
+            }
+        }
+        return ans;
+    }
+};
