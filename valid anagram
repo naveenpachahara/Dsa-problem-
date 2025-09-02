@@ -1,0 +1,9 @@
+class Solution {
+public:
+    bool isAnagram(string m, string n) {
+        if(m.size()!=n.size())return false;
+        sort(m.begin(),m.end());
+        sort(n.begin(),n.end());
+        return m==n;
+    }
+};
