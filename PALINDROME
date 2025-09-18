@@ -1,0 +1,18 @@
+class Solution {
+public:
+    bool isPalindrome(int N) {
+ long long reversenumber=0;
+ int dup=N;
+ while(N>0){
+    int lastdigit=N%10;
+    N=N/10;
+    reversenumber=(reversenumber*10)+lastdigit;
+ }
+ if(dup==reversenumber )
+ return true;
+ else{
+return false;
+ }
+        
+    }
+};
