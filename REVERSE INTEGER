@@ -1,0 +1,27 @@
+class Solution {
+public:
+    int reverse(int N) {
+        int sign = (N >= 0) ? 1 : -1;
+        long long num = abs((long long)N);  // Take absolute value safely
+        long long reversenumber = 0;
+
+        while (num > 0) {
+            int lastdigit = num % 10;
+            
+            // Overflow check
+            if (reversenumber > (INT_MAX - lastdigit) / 10)
+                return 0;
+            
+            reversenumber = (reversenumber * 10) + lastdigit;
+            num = num / 10;
+        }
+        
+        reversenumber *= sign;
+        
+        // Final overflow check (Optional, just to be safe)
+        if (reversenumber < INT_MIN || reversenumber > INT_MAX)
+            return 0;
+        
+        return (int)reversenumber;
+    }
+};
